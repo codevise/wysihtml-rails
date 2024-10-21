@@ -17810,7 +17810,7 @@ wysihtml5.views.View = Base.extend(
 
   var handleDomNodeRemoved = function(event) {
       if (this.domNodeRemovedInterval) {
-        clearInterval(domNodeRemovedInterval);
+        clearInterval(this.domNodeRemovedInterval);
       }
       this.parent.fire("destroy:composer");
   };
@@ -18019,7 +18019,7 @@ wysihtml5.views.View = Base.extend(
         if (!dom.contains(document.documentElement, container)) {
           handleDomNodeRemoved.call(this);
         }
-      }, 250);
+      }.bind(this), 250);
     }
 
     // --------- User interactions --
